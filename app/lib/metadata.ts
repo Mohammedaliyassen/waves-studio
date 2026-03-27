@@ -26,7 +26,7 @@ export function getSiteUrl() {
     normalizeSiteUrl(process.env.VERCEL_PROJECT_PRODUCTION_URL) ??
     normalizeSiteUrl(process.env.VERCEL_URL);
 
-  return siteUrl ?? "http://localhost:3000";
+  return siteUrl ?? "https://waves-studio-rzcl.vercel.app/";
 }
 
 export function getAbsoluteUrl(path = "/") {

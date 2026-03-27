@@ -33,9 +33,7 @@ export default function ProjectClient({
 
   const imageUrl = getImageUrl(project);
   const imagesUrl = getImagesUrl(project);
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-  const projectUrl = `${siteUrl}/projects/${project.id}`;
-  console.log(imagesUrl);
+
   return (
     <main className="min-h-screen bg-gray-50">
       <section className="relative h-[50vh] min-h-[400px] bg-gray-800">
@@ -162,7 +160,7 @@ export default function ProjectClient({
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">
                   {language === "ar" ? "شارك المشروع علي :" : " Share Project"}
                 </h3>
-                <ShareButtons project={project} projectUrl={projectUrl} />
+                <ShareButtons project={project} />
               </div>
             </aside>
           </div>

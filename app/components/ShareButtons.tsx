@@ -1,9 +1,9 @@
+"use client";
+
 import { Project } from "@/app/lib/definitions";
-import Link from "next/link";
 
 interface ShareButtonsProps {
   project: Project;
-  projectUrl: string;
 }
 
 const socialPlatforms = [
@@ -59,25 +59,39 @@ const socialPlatforms = [
 
 export default function ShareButtons({
   project,
-  projectUrl,
 }: ShareButtonsProps) {
+  const projectTitle = project.title_en || project.title_ar || project.title;
+  const projectDescription =
+    project.description_en || project.description_ar || project.description;
+
+  const handleShare = (
+    getShareUrl: (url: string, title: string, summary: string) => string
+  ) => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const shareUrl = getShareUrl(
+      window.location.href,
+      projectTitle,
+      projectDescription
+    );
+
+    window.open(shareUrl, "_blank", "noopener,noreferrer");
+  };
+
   return (
     <div className="flex items-center gap-3">
       {socialPlatforms.map((platform) => (
-        <Link
+        <button
           key={platform.name}
-          href={platform.getShareUrl(
-            projectUrl,
-            project.title,
-            project.description
-          )}
-          target="_blank"
-          rel="noopener noreferrer"
+          type="button"
+          onClick={() => handleShare(platform.getShareUrl)}
           aria-label={`Share on ${platform.name}`}
           className="p-3 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-900 transition-colors duration-300"
         >
           {platform.icon}
-        </Link>
+        </button>
       ))}
     </div>
   );
