@@ -49,6 +49,9 @@ export const metadata: Metadata = {
     description: siteDescription,
     images: [defaultShareImagePath],
   },
+  verification: {
+    google: "d4_PlgcMJawoVgrFoD00BQN07nFWoBkfEJbEg3sQWLE",
+  },
 };
 
 export default function RootLayout({
