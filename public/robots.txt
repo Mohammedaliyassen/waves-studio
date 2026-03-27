@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# منع صفحات خاصة فقط
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /api
+
+# Disallow: /workflow
+
+Sitemap: https://waves-studio-rzcl.vercel.app/sitemap.xml
