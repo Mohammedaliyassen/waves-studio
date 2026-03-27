@@ -30,10 +30,13 @@ export default function ProjectClient({
   const getProjectDescription = (project: Project) => {
     return language === "ar" ? project.description_ar : project.description_en;
   };
+  const getProjectBrief = (project: Project) => {
+    return language === "ar" ? project.brief_ar : project.brief_en;
+  };
 
   const imageUrl = getImageUrl(project);
   const imagesUrl = getImagesUrl(project);
-
+  console.log(project);
   return (
     <main className="min-h-screen bg-gray-50">
       <section className="relative h-[50vh] min-h-[400px] bg-gray-800">
@@ -59,7 +62,7 @@ export default function ProjectClient({
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl"
           >
-            {getProjectDescription(project)}
+            {getProjectBrief(project) || "وصف المشروع"}
           </motion.p>
         </div>
       </section>

@@ -12,6 +12,8 @@ const mockProjects: Project[] = [
     collectionId: "projects",
     title: "Sample Project 1",
     description: "This is a sample project description",
+    brief_en: "Another sample project brief",
+    brief_ar: "وصف آخر لمشروع تجريبي",
     project_imgs: [],
     tools: [],
     title_ar: "مشروع تجريبي 1",
@@ -29,6 +31,8 @@ const mockProjects: Project[] = [
     collectionId: "projects",
     title: "Sample Project 2",
     description: "Another sample project description",
+    brief_en: "Another sample project brief",
+    brief_ar: "وصف آخر لمشروع تجريبي",
     project_imgs: [],
     tools: [],
     title_ar: "مشروع تجريبي 2",
@@ -48,7 +52,7 @@ export async function getProjects(): Promise<ProjectsResponse> {
   try {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_POCKETBASE_URL}/api/collections/projects/records`,
-      { cache: "no-store" }
+      { cache: "no-store" },
     );
 
     if (!res.ok) {
@@ -58,13 +62,13 @@ export async function getProjects(): Promise<ProjectsResponse> {
     const data = await res.json();
     return {
       projects: data.items ?? [],
-      isMockData: false
+      isMockData: false,
     };
   } catch (error) {
     console.error("Database Error:", error);
     return {
       projects: mockProjects,
-      isMockData: true
+      isMockData: true,
     };
   }
 }
@@ -81,7 +85,7 @@ export async function getProjectById(id: string): Promise<ProjectResponse> {
       `${process.env.NEXT_PUBLIC_POCKETBASE_URL}/api/collections/projects/records/${id}`,
       {
         next: { revalidate: 60 }, // Revalidate every 60 seconds
-      }
+      },
     );
     if (!res.ok) {
       return { project: null, isMockData: false }; // Return null if project not found
@@ -91,7 +95,7 @@ export async function getProjectById(id: string): Promise<ProjectResponse> {
   } catch (error) {
     console.error("Database Error:", error);
     // Return mock data for sample projects when database is unavailable
-    const mockProject = mockProjects.find(p => p.id === id);
+    const mockProject = mockProjects.find((p) => p.id === id);
     return { project: mockProject || null, isMockData: true };
   }
 }

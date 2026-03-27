@@ -3,6 +3,8 @@ export interface Project {
     collectionId: string;
     title: string;
     description: string;
+    brief_en: string;
+    brief_ar: string;
     project_imgs: string[];
     tools: string[];
     title_ar: string;
