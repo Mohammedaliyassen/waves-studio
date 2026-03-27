@@ -24,7 +24,7 @@ export default function ProjectClient({
   }
 
   const getProjectTitle = (project: Project) => {
-    return language === "ar" ? project.title_ar : project.title_en;
+    return language === "ar" ? project.title_ar : project.project.slug;
   };
 
   const getProjectDescription = (project: Project) => {
@@ -61,9 +61,13 @@ export default function ProjectClient({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-xl text-gray-300 max-w-3xl"
-          >
-            {getProjectBrief(project) || "وصف المشروع"}
-          </motion.p>
+            >
+            {getProjectBrief(project) 
+              ? getProjectBrief(project).length > 100 
+              ? getProjectBrief(project).slice(0, 100) + "..." 
+              : getProjectBrief(project)
+            : "وصف المشروع"}
+</motion.p>
         </div>
       </section>
 
