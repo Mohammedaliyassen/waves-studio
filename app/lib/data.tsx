@@ -9,6 +9,7 @@ export interface ProjectsResponse {
 const mockProjects: Project[] = [
   {
     id: "1",
+    slug:"default1",
     collectionId: "projects",
     title: "Sample Project 1",
     description: "This is a sample project description",
@@ -28,6 +29,7 @@ const mockProjects: Project[] = [
   },
   {
     id: "2",
+    slug: "default2",
     collectionId: "projects",
     title: "Sample Project 2",
     description: "Another sample project description",
@@ -79,10 +81,10 @@ export interface ProjectResponse {
 }
 
 // Fetches a single project by its ID
-export async function getProjectById(id: string): Promise<ProjectResponse> {
+export async function getProjectById(slug: string): Promise<ProjectResponse> {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_POCKETBASE_URL}/api/collections/projects/records/${id}`,
+      `${process.env.NEXT_PUBLIC_POCKETBASE_URL}/api/collections/projects/records/${slug}}`,
       {
         next: { revalidate: 60 }, // Revalidate every 60 seconds
       },
