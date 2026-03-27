@@ -8,8 +8,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-cairo);
+  --font-mono: var(--font-cairo);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,9 +18,74 @@
     --foreground: #ededed;
   }
 }
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-cairo), Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1:not([class*="font-"]),
+h2:not([class*="font-"]),
+h3:not([class*="font-"]),
+h4:not([class*="font-"]),
+h5:not([class*="font-"]),
+h6:not([class*="font-"]) {
+  font-weight: 700;
+}
+
+h1[class~="font-semibold"],
+h2[class~="font-semibold"],
+h3[class~="font-semibold"],
+h4[class~="font-semibold"],
+h5[class~="font-semibold"],
+h6[class~="font-semibold"],
+h1[class~="font-medium"],
+h2[class~="font-medium"],
+h3[class~="font-medium"],
+h4[class~="font-medium"],
+h5[class~="font-medium"],
+h6[class~="font-medium"] {
+  font-weight: 700;
+}
+
+p,
+li,
+dd,
+dt,
+blockquote {
+  font-weight: 400;
+}
+
+label,
+button,
+input,
+textarea,
+select,
+a,
+summary,
+th,
+strong,
+b {
+  font-weight: 500;
+}
+
+small,
+figcaption,
+caption {
+  font-weight: 400;
 }
