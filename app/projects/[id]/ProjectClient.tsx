@@ -24,7 +24,7 @@ export default function ProjectClient({
   }
 
   const getProjectTitle = (project: Project) => {
-    return language === "ar" ? project.title_ar : project.project.slug;
+    return language === "ar" ? project.title_ar : project.title_en;
   };
 
   const getProjectDescription = (project: Project) => {
