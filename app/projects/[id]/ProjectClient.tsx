@@ -1,5 +1,3 @@
-"use client";
-
 import { getImageUrl, getImagesUrl } from "@/app/lib/utils";
 import { notFound } from "next/navigation";
 import Image from "next/image";
