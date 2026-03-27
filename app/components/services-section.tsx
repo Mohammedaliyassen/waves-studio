@@ -133,7 +133,7 @@ export default function ServicesSection() {
                   href="/services"
                   className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300"
                 >
-                  Learn More
+                  About {service.title}
                   <svg
                     className="w-4 h-4 ml-2"
                     fill="none"
